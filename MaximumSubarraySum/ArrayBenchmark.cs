@@ -50,7 +50,7 @@ public class ArrayBenchmark
 
         var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
         var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
-        WriteLine(CreateResults(CubicComplexityName, bestSum, recalculatedTotalTime));
+        WriteLine(CreateResult(CubicComplexityName, bestSum, recalculatedTotalTime));
     }
 
     public void CalculateQuadraticComplexity()
@@ -70,7 +70,7 @@ public class ArrayBenchmark
 
         var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
         var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
-        WriteLine(CreateResults(QuadraticComplexityName, bestSum, recalculatedTotalTime));
+        WriteLine(CreateResult(QuadraticComplexityName, bestSum, recalculatedTotalTime));
     }
 
     public void CalculateLinearComplexity()
@@ -87,7 +87,7 @@ public class ArrayBenchmark
 
         var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
         var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
-        WriteLine(CreateResults(LinearComplexityName, bestSum, recalculatedTotalTime));
+        WriteLine(CreateResult(LinearComplexityName, bestSum, recalculatedTotalTime));
     }
 
     string RecalculateTimeSpan(double timeSpan)
@@ -114,6 +114,6 @@ public class ArrayBenchmark
         return $"{timeSpan:N2} {timeSpanUnit}";
     }
 
-    string CreateResults(string algorithmComplexity, int bestSum, string totalTimeWithUnit) =>
+    string CreateResult(string algorithmComplexity, int bestSum, string totalTimeWithUnit) =>
         $"O({algorithmComplexity}) best sum='{bestSum}' took {totalTimeWithUnit} with {_numbers.Length} elements.";
 }
