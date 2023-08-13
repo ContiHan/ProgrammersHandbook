@@ -14,8 +14,15 @@ public class ArrayBenchmark
             .Select(_ => new Random().Next(-9, 10))
             .ToArray();
     }
+    
+    public void CalculateAllComplexities()
+    {
+        CalculateCubicComplexity();
+        CalculateQuadraticComplexity();
+        CalculateLinearComplexity();
+    }
 
-    public void Calculate()
+    public void CalculateCubicComplexity()
     {
         var bestSum = 0;
         var startTime = DateTime.Now;
@@ -34,12 +41,14 @@ public class ArrayBenchmark
         }
 
         var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
-        var recalculatedTotalTime = RecalculateTime(totalTime);
+        var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
         WriteLine(CreateResults("n^3", bestSum, recalculatedTotalTime));
+    }
 
-
-        bestSum = 0;
-        startTime = DateTime.Now;
+    public void CalculateQuadraticComplexity()
+    {
+        var bestSum = 0;
+        var startTime = DateTime.Now;
         for (int a = 0; a < _numbers.Length; a++)
         {
             var currentSum = 0;
@@ -50,26 +59,28 @@ public class ArrayBenchmark
             }
         }
 
-        totalTime = (DateTime.Now - startTime).TotalMicroseconds;
-        recalculatedTotalTime = RecalculateTime(totalTime);
+        var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
+        var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
         WriteLine(CreateResults("n^2", bestSum, recalculatedTotalTime));
+    }
 
-        bestSum = 0;
-        int sum = 0;
-        startTime = DateTime.Now;
+    public void CalculateLinearComplexity()
+    {
+        var bestSum = 0;
+        var currentSum = 0;
+        var startTime = DateTime.Now;
         for (int a = 0; a < _numbers.Length; a++)
         {
-            sum = Max(_numbers[a], sum + _numbers[a]);
-            bestSum = Max(bestSum, sum);
+            currentSum = Max(_numbers[a], currentSum + _numbers[a]);
+            bestSum = Max(bestSum, currentSum);
         }
 
-        totalTime = (DateTime.Now - startTime).TotalMicroseconds;
-        recalculatedTotalTime = RecalculateTime(totalTime);
+        var totalTime = (DateTime.Now - startTime).TotalMicroseconds;
+        var recalculatedTotalTime = RecalculateTimeSpan(totalTime);
         WriteLine(CreateResults("n^1", bestSum, recalculatedTotalTime));
     }
 
-
-    string RecalculateTime(double timeSpan)
+    string RecalculateTimeSpan(double timeSpan)
     {
         var timeSpanUnit = "microseconds";
         if (timeSpan > 1000)
