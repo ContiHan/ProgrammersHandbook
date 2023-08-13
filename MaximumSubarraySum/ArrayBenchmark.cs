@@ -5,7 +5,6 @@ using static Math;
 
 public class ArrayBenchmark
 {
-    // var numbers = new[] { -1, 2, 4, -3, 5, 2, -5, 2 };
     private readonly int[] _numbers;
 
     public ArrayBenchmark(uint elementCount)
