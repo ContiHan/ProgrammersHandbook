@@ -11,7 +11,7 @@ public class ArrayBenchmark
     {
         _numbers = Enumerable
             .Range(0, (int)elementCount)
-            .Select(_ => new Random().Next(-10, 11))
+            .Select(_ => new Random().Next(-9, 10))
             .ToArray();
     }
 
