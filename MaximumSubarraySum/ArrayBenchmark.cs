@@ -3,15 +3,15 @@
 using static Console;
 using static Math;
 
-public class Calculation
+public class ArrayBenchmark
 {
     // var numbers = new[] { -1, 2, 4, -3, 5, 2, -5, 2 };
     private readonly int[] _numbers;
 
-    public Calculation(byte exponent)
+    public ArrayBenchmark(uint elementCount)
     {
         _numbers = Enumerable
-            .Range(0, (int)Pow(10, exponent))
+            .Range(0, (int)elementCount)
             .Select(_ => new Random().Next(-10, 11))
             .ToArray();
     }
